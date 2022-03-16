@@ -11,6 +11,30 @@
 	},{
 		"path":"pages/my/my"
 	}],
+	"subPackages":[
+		{
+			"root":"subpack",
+			"pages":[{
+                    "path" : "goodes_detail/goodes_detail",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "商品详情页",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "good_list/good_list",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+		}
+	],
 	"tabBar":{
 		"selectedColor": "#C00000",
 		"list":[

@@ -1,0 +1,23 @@
+{
+  "name": "my-fristApp",
+  "version": "1.0.0",
+  "description": "微信小程序，黑马优购",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LspHsx824/uni-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LspHsx824/uni-app/issues"
+  },
+  "homepage": "https://github.com/LspHsx824/uni-app#readme",
+  "dependencies": {
+    "@escook/request-miniprogram": "^0.2.1"
+  }
+}
