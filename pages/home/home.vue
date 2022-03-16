@@ -47,8 +47,6 @@
 				swiperList:[],
 				navList: [],
 				floorList: []
-
-
 			};
 		},
 		onLoad(){
