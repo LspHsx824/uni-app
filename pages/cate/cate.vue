@@ -1,5 +1,8 @@
 <template>
 	<view class="scroll-view">
+		<!-- 搜索框 -->
+		<search @click="searchGoods"></search>
+		<view class="goods-view">
 		<!-- 左侧滚动视图 -->
 		<scroll-view scroll-y="true" class="left-scroll" :style="{height: wh +'px'}">
 			<!-- <view class="left-item active">XXXX</view> -->
@@ -28,6 +31,7 @@
 				</view>
 			</view>
 		</scroll-view>
+		</view>
 	</view>
 </template>
 
@@ -44,7 +48,7 @@
 		},
 		onLoad(){
 			const sysInfo = uni.getSystemInfoSync()
-			this.wh = sysInfo.windowHeight
+			this.wh = sysInfo.windowHeight - 50
 			// console.log(this.wh)
 			this.getCateList()
 		},
@@ -67,6 +71,11 @@
 				uni.navigateTo({
 					url:`/subpack/good_list/good_list?cid=${item.cat_id}`
 				})
+			},
+			searchGoods(){
+				uni.navigateTo({
+					url:"/subpack/search/search"
+				})
 			}
 		}
 	}
@@ -74,7 +83,9 @@
 
 <style lang="scss">
 	.scroll-view{
-		display: flex;
+		.goods-view{
+			display: flex;
+		}
 		.left-scroll{
 			display: flex;
 			width: 120px;
@@ -87,7 +98,7 @@
 				font-size: 12px;
 				background-color: #f7f7f7;
 				&.active{
-					background-color: pink;
+					background-color: #EEEEEE;
 					&::before{
 						content: "";
 						display: block;

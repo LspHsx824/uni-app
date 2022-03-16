@@ -1,5 +1,10 @@
 <template>
 	<view>
+		<!-- 搜索栏 -->
+		<view class="search-box">
+			<search  @click="gotoSearch"></search>
+		</view>
+		
 		<!-- 轮播图区域 -->
 		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
 			<swiper-item v-for="(item,i) in swiperList " :key="i">
@@ -61,7 +66,7 @@
 					const { data:res } = await uni.$http.get('/api/public/v1/home/swiperdata')
 					this.swiperList = res.message;
 					
-				}catch{
+				}catch(err){
 					return uni.$showMsg()
 				}
 				
@@ -70,7 +75,7 @@
 				try{
 					const { data: res } = await uni.$http.get('/api/public/v1/home/catitems')
 					this.navList = res.message
-				}catch{
+				}catch(err){
 					return uni.$showMsg()
 				}
 			},
@@ -85,7 +90,7 @@
 					})
 					
 					this.floorList = res.message
-				}catch{
+				}catch(err){
 					return uni.$showMsg()
 				}
 			},
@@ -96,6 +101,11 @@
 						url:"/pages/cate/cate"
 					})
 				}
+			},
+			gotoSearch(){
+				uni.navigateTo({
+					url:"/subpack/search/search"
+				})
 			}
 		}
 		
@@ -103,6 +113,12 @@
 </script>
 
 <style lang="scss">
+	.search-box{
+		position: sticky;
+		z-index: 999;
+		left:0;
+		top:0
+	}
 	 swiper {
 	    height: 330rpx;
 	
