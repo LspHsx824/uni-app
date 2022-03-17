@@ -27,8 +27,10 @@
                     "path" : "good_list/good_list",
                     "style" :                                                                                    
                 {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
+                    "navigationBarTitleText": "猜你喜欢",
+                    "enablePullDownRefresh": true,
+					"onReachBottomDistance":150,
+					"backgroundColor":"#F8F8F8"
                 }
                 
                 }
