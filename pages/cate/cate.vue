@@ -16,7 +16,7 @@
 		</scroll-view>
 		<!-- 右侧滚动视图 -->
 		<scroll-view scroll-y="true" class="right-scroll"  :style="{height: wh +'px'}"  :scroll-top="scrollTop">
-			<view class="right-item" v-for="(item2,i) in cateLevel2" :key="i">
+			<view class="right-item" v-for="(item2,i2) in cateLevel2" :key="i2">
 				<view class="cate-lv2-title">
 					/ {{ item2.cat_name}} /
 				</view>
@@ -24,7 +24,7 @@
 				<!-- 二级分类下的 content -->
 				<view class="lv3-box" >
 					<!-- 三级分类 -->
-					<view class="lv3-item" v-for="(item3,i) in item2.children" :key="i"  @click="gotoGoodsList(item3)">
+					<view class="lv3-item" v-for="(item3,i3) in item2.children" :key="i3"  @click="gotoGoodsList(item3)">
 						<image :src="item3.cat_icon" class="lv3-img" ></image>
 						<text class="lv3-txt">{{ item3.cat_name}}</text>
 					</view>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+	import cat_mixins from "@/mixins/index.js"
 	export default {
 		data() {
 			return {
@@ -46,6 +47,7 @@
 				cateLevel2: [], // 二级分类
 			};
 		},
+		mixins:[cat_mixins],
 		onLoad(){
 			const sysInfo = uni.getSystemInfoSync()
 			this.wh = sysInfo.windowHeight - 50

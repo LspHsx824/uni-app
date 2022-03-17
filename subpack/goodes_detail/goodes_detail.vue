@@ -36,12 +36,13 @@
 </template>
 
 <script>
+	import { mapState,mapGetters,mapMutations} from "vuex" 
 	export default {
 		data() {
 			return {
 				 // 商品详情对象
 				goods_info: {},
-				 options: [{
+				options: [{
 							icon: 'headphones',
 							text: '客服'
 						}, {
@@ -52,9 +53,9 @@
 						}, {
 							icon: 'cart',
 							text: '购物车',
-							info: 2
+							info: this.totalGoods
 						}],
-					    buttonGroup: [{
+				buttonGroup: [{
 					      text: '加入购物车',
 					      backgroundColor: '#ff0000',
 					      color: '#fff'
@@ -71,7 +72,24 @@
 			const goods_id = options.goods_id
 			this.getGoodsDetail(goods_id)
 		},
+		computed:{
+			...mapState(["cart"]),
+			...mapGetters(["totalGoods"])
+		},
+		watch:{
+			totalGoods:{
+				immediate:true,
+				handler(newVal){
+					this.options.some( item=>{
+						if(item.text === '购物车'){
+							item.info = newVal
+							}
+						})
+					}
+				}
+		},
 		methods:{
+			...mapMutations(["addToCart"]),
 			async getGoodsDetail(goods_id){
 				
 				try{
@@ -97,8 +115,20 @@
 						 })
 					 }
 				 },
-				 buttonClick(){
-					 
+				 buttonClick(e){
+					 if(e.index === 0 ){
+					   // 2. 组织一个商品的信息对象
+					       const goods = {
+					          goods_id: this.goods_info.goods_id,       // 商品的Id
+					          goods_name: this.goods_info.goods_name,   // 商品的名称
+					          goods_price: this.goods_info.goods_price, // 商品的价格
+					          goods_count: 1,                           // 商品的数量
+					          goods_small_logo: this.goods_info.goods_small_logo, // 商品的图片
+					          goods_state: true                         // 商品的勾选状态
+					       }
+						 this.addToCart(goods)
+						 
+					 }
 				 }
 				 
 		}

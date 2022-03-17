@@ -46,6 +46,7 @@
 </template>
 
 <script>
+	import cat_mixins from "@/mixins/index.js"
 	export default {
 		data() {
 			return {
@@ -54,6 +55,7 @@
 				floorList: []
 			};
 		},
+		mixins:[cat_mixins],
 		onLoad(){
 			this.getSwiperList() 
 			this.getNavList()
