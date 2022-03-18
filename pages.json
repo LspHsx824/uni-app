@@ -9,7 +9,11 @@
 	},{
 		"path":"pages/cart/cart"
 	},{
-		"path":"pages/my/my"
+		"path":"pages/my/my",
+		"style":{
+			"backgroundColor":"#fff"
+			
+		}
 	}],
 	"subPackages":[
 		{
